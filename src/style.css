@@ -14,6 +14,12 @@
 	border-radius: 0;
 }
 
+/* Spacing for the logo in the navbar */
+#logo {
+	margin-top: 5px;
+	margin-right: 8px;
+}
+
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
 	height: 450px
