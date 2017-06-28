@@ -5,7 +5,8 @@
 }
 
 .middle-info {
-	color: white;
+	color: black;
+	margin-bottom: 20px;
 }
 
 /* Remove the navbar's default margin-bottom and rounded borders */

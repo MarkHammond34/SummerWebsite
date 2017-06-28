@@ -13,6 +13,7 @@
 	color: black;
 }
 
+/* This is where the icons, tips, and like/dislike buttons are contained */
 .media-content {
 	margin-top: 15px;
 	padding-bottom: 40px; border-bottom-style : solid;
@@ -21,6 +22,7 @@
 	border-bottom-style: solid;
 }
 
+/* Spacing and location of like button */
 #like-button {
 	background-image: url("images/thumbs-up.png");
 	background-size: 30px 30px;
@@ -32,6 +34,7 @@
 	margin-left: 10px;
 }
 
+/* Spacing and location of dislike button */
 #dislike-button {
 	background-image: url("images/thumbs-down.png");
 	background-size: 30px 30px;
@@ -43,6 +46,7 @@
 	margin-left: 10px;
 }
 
+/* Allows buttons to have shadow when cursor is on it */
 .btn:hover {
 	box-shadow: 1px 3px 4px 1px rgba(0, 0, 0, 0.24), 0 2px 3px 0
 		rgba(0, 0, 0, 0.19);
