@@ -15,7 +15,7 @@
 
 </head>
 <body>
-
+	
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -30,7 +30,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="FindMySchool.html">Find My School</a></li>
+					<li><a href="#">Find My School</a></li>
 					<li><a href="#">General Tips</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">FAQ</a></li>
@@ -72,8 +72,8 @@
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Mark Hammond</h4>
-							<p>This will be where the tip goes. I am just adding text
+							<h4 class="media-heading"><?php $test_name; ?></h4>
+							<p id="tip1-tip">This will be where the tip goes. I am just adding text
 								here to test out how the text will wrap around. TEST TEST TEST
 								TEST TEST TEST TEST TEST</p>
 						</div>
@@ -153,5 +153,58 @@
 	<footer class="container-fluid text-center">
 		<p>Created By Corey Kuehl & Mark Hammond</p>
 	</footer>
+	
+	<!-- php put here for testing purposes -->
+	<?php 
+	
+	define('DB_NAME', 'student_tips');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', 'password');
+	define('DB_HOST', 'localhost');
+	
+	/** Make connection */
+	$con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
+	
+	/** If connection is not made, print error */
+	if (!$con) {
+		die('Could not connect: ' . mysql_error());
+	}
+	
+	/** Select the database */
+	$db_selected = mysql_select_db(DB_NAME, $con);
+	
+	/** If db not selected, print error */
+	if (!$db_selected) {
+		die('Can\'t use ' . DB_NAME . ': ' . mysql_error());
+	}
+	
+	/** Query statement */
+	$sql = "SELECT first_name, last_name, tip, date FROM tips";
+	$result = $con->query($sql);
+	
+	/** If there are results */
+	if ($result->num_rows > 0) {
+		
+		/** Initialize arrays */
+		$name_array = array();
+		$tip_array = array();
+		$date_array = array();
+				
+		$num_rows = $result->num_rows;
+		
+		/** Loops through results */
+		for ($i = 0; $i < $num_rows; $i++) {
+			
+			/** Put data into corresponding array */
+			array_push($name_array, $row["first_name"] . " " . $row["last_name"]);
+			array_push($tip_array, $row["tip"]);
+			array_push($date_array, $row["date"]);
+			
+		}
+		
+	}
+	
+	?>
+	
 </body>
 </html>
