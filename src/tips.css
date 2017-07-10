@@ -16,7 +16,7 @@
 /* This is where the icons, tips, and like/dislike buttons are contained */
 .media-content {
 	margin-top: 15px;
-	padding-bottom: 40px; border-bottom-style : solid;
+	padding-bottom: 40px;
 	border-color: black;
 	border-width: 1px;
 	border-bottom-style: solid;
