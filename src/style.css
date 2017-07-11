@@ -9,6 +9,10 @@
 	margin-bottom: 20px;
 }
 
+.thanks-banner {
+	text-align: center;
+}
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;

@@ -1,3 +1,41 @@
+<?php
+
+require 'db_connection.php';
+
+/** Create connection by calling function from db_connection.php */
+$link = makeConnection();
+
+/** Query statement */
+$sql = "SELECT first_name, last_name, tip, date FROM tips";
+
+/** Get results from query (rows from the database) */
+$result = $link->query($sql);
+
+/** If there are results */
+if ($result->num_rows > 0) {
+	
+	/** Initialize arrays */
+	$name_array = array();
+	$tip_array = array();
+	$date_array = array();
+	
+	$num_rows = $result->num_rows;
+	
+	/** Loops through results */
+	while ($row = $result->fetch_assoc()) {
+		
+		/** Put data into corresponding array */
+		array_push($name_array, $row["first_name"] . " " . $row["last_name"]);
+		array_push($tip_array, $row["tip"]);
+		array_push($date_array, $row["date"]);
+		
+	}
+}
+
+/** Close mysql connection */
+closeConnection($link);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +68,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Find My School</a></li>
+					<li><a href="FindMySchool.html">Find My School</a></li>
 					<li><a href="#">General Tips</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">FAQ</a></li>
@@ -72,10 +110,12 @@
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading"><?php $test_name; ?></h4>
-							<p id="tip1-tip">This will be where the tip goes. I am just adding text
-								here to test out how the text will wrap around. TEST TEST TEST
-								TEST TEST TEST TEST TEST</p>
+							<h4 class="media-heading">
+								<?php echo $name_array[0]; ?>
+							</h4>
+							<p id="tip1-tip">
+								<?php echo $tip_array[0]; ?>
+							</p>
 						</div>
 						<div class="media-buttons">
 							<button type="button" class="btn" id="dislike-button"></button>
@@ -89,10 +129,12 @@
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Steve Schultz</h4>
-							<p>This will be where the tip goes. I am just adding text
-								here to test out how the text will wrap around. TEST TEST TEST
-								TEST TEST TEST TEST TEST</p>
+							<h4 class="media-heading">
+								<?php echo $name_array[1]; ?>
+							</h4>
+							<p id="tip1-tip">
+								<?php echo $tip_array[1]; ?>
+							</p>
 						</div>
 						<div class="media-buttons">
 							<button type="button" class="btn" id="dislike-button"></button>
@@ -106,10 +148,12 @@
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Jacob Trumpis</h4>
-							<p>This will be where the tip goes. I am just adding text
-								here to test out how the text will wrap around. TEST TEST TEST
-								TEST TEST TEST TEST TEST</p>
+							<h4 class="media-heading">
+								<?php echo $name_array[2]; ?>
+							</h4>
+							<p id="tip1-tip">
+								<?php echo $tip_array[2]; ?>
+							</p>
 						</div>
 						<div class="media-buttons">
 							<button type="button" class="btn" id="dislike-button"></button>
@@ -124,10 +168,12 @@
 								style="width: 60px">
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading">Corey Kuehl</h4>
-							<p>This will be where the tip goes. I am just adding text
-								here to test out how the text will wrap around. TEST TEST TEST
-								TEST TEST TEST TEST TEST</p>
+							<h4 class="media-heading">
+								<?php echo $name_array[3]; ?>
+							</h4>
+							<p id="tip1-tip">
+								<?php echo $tip_array[3]; ?>
+							</p>
 						</div>
 						<div class="media-buttons">
 							<button type="button" class="btn" id="dislike-button"></button>
@@ -137,15 +183,15 @@
 					<hr>
 				</div>
 			</div>
+		</div>
 
-			<!-- RIGHT SIDE NAVIGATION -->
-			<div class="col-sm-2 sidenav">
-				<div class="well">
-					<p>ADS</p>
-				</div>
-				<div class="well">
-					<p>ADS</p>
-				</div>
+		<!-- RIGHT SIDE NAVIGATION -->
+		<div class="col-sm-2 sidenav">
+			<div class="well">
+				<p>ADS</p>
+			</div>
+			<div class="well">
+				<p>ADS</p>
 			</div>
 		</div>
 	</div>
@@ -153,58 +199,5 @@
 	<footer class="container-fluid text-center">
 		<p>Created By Corey Kuehl & Mark Hammond</p>
 	</footer>
-	
-	<!-- php put here for testing purposes -->
-	<?php 
-	
-	define('DB_NAME', 'student_tips');
-	define('DB_USER', 'root');
-	define('DB_PASSWORD', 'password');
-	define('DB_HOST', 'localhost');
-	
-	/** Make connection */
-	$con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
-	
-	/** If connection is not made, print error */
-	if (!$con) {
-		die('Could not connect: ' . mysql_error());
-	}
-	
-	/** Select the database */
-	$db_selected = mysql_select_db(DB_NAME, $con);
-	
-	/** If db not selected, print error */
-	if (!$db_selected) {
-		die('Can\'t use ' . DB_NAME . ': ' . mysql_error());
-	}
-	
-	/** Query statement */
-	$sql = "SELECT first_name, last_name, tip, date FROM tips";
-	$result = $con->query($sql);
-	
-	/** If there are results */
-	if ($result->num_rows > 0) {
-		
-		/** Initialize arrays */
-		$name_array = array();
-		$tip_array = array();
-		$date_array = array();
-				
-		$num_rows = $result->num_rows;
-		
-		/** Loops through results */
-		for ($i = 0; $i < $num_rows; $i++) {
-			
-			/** Put data into corresponding array */
-			array_push($name_array, $row["first_name"] . " " . $row["last_name"]);
-			array_push($tip_array, $row["tip"]);
-			array_push($date_array, $row["date"]);
-			
-		}
-		
-	}
-	
-	?>
-	
 </body>
 </html>

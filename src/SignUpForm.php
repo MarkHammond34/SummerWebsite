@@ -4,8 +4,8 @@
 <title>Student Tips</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="style.css" type="text/css" rel="stylesheet" />
-<link href="signup.css" type="text/css" rel="stylesheet" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/signup.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -30,7 +30,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="FindMySchool.html">Find My School</a></li>
+					<li><a href="#">Find My School</a></li>
 					<li><a href="#">General Tips</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">FAQ</a></li>
@@ -172,10 +172,10 @@
 						<div class="form-group">
 							<label>Year</label> <br> <select name="year" id="year">
 								<option value="" selected="selected">Select your year</option>
-								<option value="AL">Freshman (1st Year)</option>
-								<option value="AK">Sophemore (2st Year)</option>
-								<option value="AZ">Junior (3rd Year)</option>
-								<option value="AR">Senior (4+ Year)</option>
+								<option value="FR">Freshman (1st Year)</option>
+								<option value="SO">Sophemore (2st Year)</option>
+								<option value="JR">Junior (3rd Year)</option>
+								<option value="SR">Senior (4+ Year)</option>
 							</select>
 						</div>
 						<!-- Gender -->
@@ -186,11 +186,6 @@
 								<option value="other">Other</option>
 							</select>
 						</div>
-						<!-- Don't need this for sign up sheet, just for sign in. -->
-						<!-- <div class="checkbox">-->
-						<!--<label><input type="checkbox" name="remember">-->
-						<!--Remember me</label>-->
-						<!--</div>-->
 						<br>
 						<button type="submit" value="submit" class="btn btn-default">Submit</button>
 					</form>
