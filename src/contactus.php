@@ -1,12 +1,39 @@
+<?php
+
+require 'db_connection.php';
+
+/** Create connection by calling function from db_connection.php */
+$link = makeConnection();
+
+/** Retrieve data from form POST */
+$name = $_POST['full-name'];
+$email = $_POST['email'];
+$comment = $_POST['comment'];
+
+/** Get timestamp */
+$time_stamp = date("Y-m-d") . " " . date("H:i:s");
+
+/** SQL insert statement */
+$sql = "INSERT INTO student_tips.comment VALUES ('$name', '$email', '$comment','$time_stamp')";
+
+/** Run and check to make sure insert was successful */
+if (!$link->query($sql)) {
+	die('Error: ' . mysqli_error($link));
+}
+
+/** Close mysql connection */
+closeConnection($link);
+?>
+ 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>About Us</title>
+<title>Student Tips</title>
 <link rel="title icon" href="images/icon.png">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="style.css" type="text/css" rel="stylesheet" />
-<link href="signup.css" type="text/css" rel="stylesheet" />
+<link href="findmyschool.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -15,7 +42,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
 <body>
 
 	<nav class="navbar navbar-inverse">
@@ -31,10 +57,10 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Find My School</a></li>
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="FindMySchool.html">Find My School</a></li>
 					<li><a href="#">General Tips</a></li>
-					<li class="active"><a href="#">About</a></li>
+					<li><a href="#">About</a></li>
 					<li><a href="#">FAQ</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
@@ -46,8 +72,6 @@
 		</div>
 	</nav>
 
-	<!-- End Navbar -->
-	
 	<div class="container-fluid bg-1 text-center">
 		<div class="row content">
 			<!-- LEFT SIDE NAVIGATION -->
@@ -65,14 +89,9 @@
 			</div>
 
 			<!-- MIDDLE BODY -->
-			<div class="col-sm-8 middle-info text-left">
-				<h1>Welcome</h1>
-				<p>This is going to be a brief description of who we are .</p>
-				<hr>
-
+			<div class="col-sm-8 middle-info text-left thanks-banner">
+				<h1>Thanks for the comment!</h1>
 			</div>
-
-			<!-- END FORM -->
 
 			<!-- RIGHT SIDE NAVIGATION -->
 			<div class="col-sm-2 sidenav">
@@ -88,7 +107,6 @@
 
 	<footer class="container-fluid text-center">
 		<p>Created By Corey Kuehl & Mark Hammond</p>
-	</footer>
-
+	</footer> 
 </body>
 </html>

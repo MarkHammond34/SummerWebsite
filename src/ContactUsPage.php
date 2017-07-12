@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>About Us</title>
+<title>Contact Us</title>
 <link rel="title icon" href="images/icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="style.css" type="text/css" rel="stylesheet" />
-<link href="signup.css" type="text/css" rel="stylesheet" />
+<link href="contactus.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -34,9 +34,9 @@
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Find My School</a></li>
 					<li><a href="#">General Tips</a></li>
-					<li class="active"><a href="#">About</a></li>
+					<li><a href="#">About</a></li>
 					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Contact</a></li>
+					<li class="active"><a href="#">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
@@ -47,7 +47,7 @@
 	</nav>
 
 	<!-- End Navbar -->
-	
+
 	<div class="container-fluid bg-1 text-center">
 		<div class="row content">
 			<!-- LEFT SIDE NAVIGATION -->
@@ -66,10 +66,46 @@
 
 			<!-- MIDDLE BODY -->
 			<div class="col-sm-8 middle-info text-left">
-				<h1>Welcome</h1>
-				<p>This is going to be a brief description of who we are .</p>
-				<hr>
-
+				<h1>Contact Us</h1>
+				<div class="middle-left-info">
+					<form class="contact-form" action="contactus.php" method="post">
+						<!-- First Name -->
+						<div class="form-group">
+							<label>Your Name</label> <input type="text" class="form-control"
+								id="full-name" placeholder="Enter your name" name="full-name">
+						</div>
+						<!-- Email -->
+						<div class="form-group">
+							<label>Email</label> <input type="text" class="form-control"
+								id="email" placeholder="Enter your email" name="email">
+						</div>
+						<!-- Password -->
+						<div class="form-group">
+							<label>Comment</label> <input type="text" class="form-control"
+								id="comment" placeholder="Type comment here" name="comment">
+						</div>
+						<button type="submit" value="submit"
+							class="btn btn-default submit-button">Submit</button>
+					</form>
+				</div>
+				<div class="middle-right-info">
+					<h3 id="contact-info-title">Contact Info</h3>
+					<br>
+					<div>
+						<h5 class="contact-info">Email</h5>
+						<h5 class="contact-info">contactus@studenttips.com</h5>
+					</div>
+					<br>
+					<div>
+						<h5 class="contact-info">Phone Number</h5>
+						<h5 class="contact-info">(630) 123-4567</h5>
+					</div>
+					<br>
+					<div>
+						<h5 class="contact-info">Brogrammers Inc.</h5>
+						<h5 class="contact-info">Lisle, Illinois</h5>
+					</div>
+				</div>
 			</div>
 
 			<!-- END FORM -->
